@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API_URL = 'https://api.openai.com/v1/chat/completions';
-const API_KEY = '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';
+const API_KEY = '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';
 
 const OpenAiApiClient = {
   post: async conversation => {
