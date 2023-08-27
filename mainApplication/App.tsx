@@ -1,6 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/no-unstable-nested-components */
 import React, {useEffect, useState} from 'react';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Bubble, GiftedChat, IMessage} from 'react-native-gifted-chat';
 import ChatService from './components/Backend/ChatService';
