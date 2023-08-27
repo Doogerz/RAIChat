@@ -1,6 +1,7 @@
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/no-unstable-nested-components */
 import React, {useEffect, useState} from 'react';
-import {Button, StyleSheet, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Bubble, GiftedChat, IMessage} from 'react-native-gifted-chat';
 import ChatService from './components/Backend/ChatService';
 import {NavigationContainer} from '@react-navigation/native';
@@ -95,18 +96,18 @@ const App = () => {
               fontWeight: 'bold',
             },
             headerRight: () => (
-              <Button
+              <TouchableOpacity
                 onPress={() => console.log('This is a button!')}
-                title="Settings"
-                color="#fff"
-              />
+                style={{marginRight: 10}}>
+                <Text style={{color: '#fff'}}>Settings</Text>
+              </TouchableOpacity>
             ),
             headerLeft: () => (
-              <Button
+              <TouchableOpacity
                 onPress={() => console.log('This is another button!')}
-                title="Tokens"
-                color="#fff"
-              />
+                style={{marginLeft: 10}}>
+                <Text style={{color: '#fff'}}>Tokens</Text>
+              </TouchableOpacity>
             ),
           }}
         />

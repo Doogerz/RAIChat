@@ -41,6 +41,7 @@ export const CustomInputToolbar = (props: any) => {
           borderWidth: 1,
           borderRadius: 20,
           backgroundColor: 'gray',
+          marginTop: -10,
         }}
         value={text}
         onChangeText={setText}
@@ -53,6 +54,7 @@ export const CustomInputToolbar = (props: any) => {
           backgroundColor: 'teal',
           padding: 10,
           borderRadius: 20,
+          marginTop: -10,
         }}>
         <Text style={{color: 'white'}}>Send</Text>
       </TouchableOpacity>
