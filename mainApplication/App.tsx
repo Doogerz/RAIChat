@@ -7,11 +7,20 @@ import ChatService from './components/Backend/ChatService';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {CustomInputToolbar} from './components/Frontend/CustomInputToolbar';
+import SegmentedControlTab from 'react-native-segmented-control-tab';
+import{useModelSwitch} from './components/Backend/useModelSwitch';
+
+
+
+
+
+
 
 const Stack = createStackNavigator();
 
 const ChatScreen = () => {
   const [messages, setMessages] = useState<IMessage[]>([]);
+
 
   useEffect(() => {
     const greetingMessage = {
@@ -80,35 +89,49 @@ const styles = StyleSheet.create({
 });
 
 const App = () => {
+  const { selectedIndex, handleIndexChange } = useModelSwitch();
+
+ 
+
   return (
+    
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
           name="Chat"
           component={ChatScreen}
           options={{
-            title: 'Rai',
-            headerStyle: {
-              backgroundColor: 'black',
-            },
-            headerTintColor: 'white',
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
-            headerRight: () => (
+            headerStyle:{ backgroundColor: 'black'},
+
+            headerTitle: () => (
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '50%' }}>
+              
               <TouchableOpacity
                 onPress={() => console.log('This is a button!')}
-                style={{marginRight: 10}}>
-                <Text style={{color: '#fff'}}>Settings</Text>
+                style={{marginLeft: 4, marginRight:60, backgroundColor: '#333', paddingVertical: 6, paddingHorizontal: 6, borderRadius: 10,
+                        flexDirection:'row', alignItems:'center'}}>
+                          <Text style={{color: 'white'}}>Tok</Text>
+                          
               </TouchableOpacity>
-            ),
-            headerLeft: () => (
+      
+              <SegmentedControlTab
+                values={['GPT-3.5', 'GPT-4.0']}
+                selectedIndex={selectedIndex}
+                onTabPress={handleIndexChange}
+                tabStyle={{ borderColor: '#333', backgroundColor: 'white' }}
+                activeTabStyle={{ backgroundColor: '#333' }}
+                tabTextStyle={{ color: '#333' }}
+                activeTabTextStyle={{ color: 'white' }}
+              />
+      
               <TouchableOpacity
                 onPress={() => console.log('This is another button!')}
-                style={{marginLeft: 10}}>
-                <Text style={{color: '#fff'}}>Tokens</Text>
+                style={{marginLeft: 60, marginRight: 5,backgroundColor: '#333', paddingVertical: 6, paddingHorizontal: 6, borderRadius: 10,
+                flexDirection:'row', alignItems:'center'}}>
+                <Text style={{color: 'white'}}>Set</Text>
               </TouchableOpacity>
-            ),
+            </View>
+          ),
           }}
         />
       </Stack.Navigator>

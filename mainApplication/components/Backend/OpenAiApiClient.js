@@ -1,14 +1,14 @@
 import axios from 'axios';
 
 const API_URL = 'https://api.openai.com/v1/chat/completions';
-const API_KEY = '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';
+const API_KEY = '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';
 
 const OpenAiApiClient = {
-  post: async conversation => {
+  post: async (conversation, model) => {
     return await axios.post(
       API_URL,
       {
-        model: 'gpt-3.5-turbo',
+        model: model,
         messages: conversation,
         temperature: 0.5,
         max_tokens: 100,
